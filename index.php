@@ -1,3 +1,14 @@
+<?php
+require "classes/booksView.php";
+
+//instantiatingview class
+$results = new BooksView();
+
+//fetching all books
+$books = $results->getBooks();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
