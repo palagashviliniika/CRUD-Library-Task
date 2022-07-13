@@ -56,37 +56,36 @@ $books = $results->getBooks();
     <div class="container_popular3">
         <div class="headline">popular posts</div>
 
+        <?php foreach ($books as $book){ ?>
+
         <div class="container second">
 
-            <script>
-                for(var i=0; i<books.length; i++){
-                    document.write(
-                        "<div class='post'>"+
-                        "<div class='img' style='background-image: url("+books[i].url+")'>"+
+            <div class='post'>
 
-                        "</div>"+
-                        "<div class='popular_description'>"+
-                        "<h3 class='h3_art'>"+"<a href='' class='popular_article'>"+
+                <div class='img' style='background-image: url("images/default.jpg")'></div>
 
-                        books[i].dasaxeleba+
+                    <div class='popular_description'>
+                    <h3 class='h3_art'>
+                        <a href='' class='popular_article'>
+                            <?php $results->showTitle($book); ?>
+                        </a>
+                    </h3>
+                    <div class='popular_subtitle'>
+                        <div class='fa fa-star'></div>
+                        <a class='popular_subtext'><?php $results->showAuthor($book); ?> - <?php $results->showRelDate($book); ?> </a>
+                    </div>
 
-                        "</a>"+"</h3>"+
-                        "<div class='popular_subtitle'>"+
-                        "<div class='fa fa-star'>"+"</div>"+
-                        "<a class='popular_subtext'>"+books[i].avtori+" - "+books[i].gamomcemloba+", "+books[i].weli+ "</a>"+
-                        "</div>"+
-
-                        "<div class='popular_subtitle second'>"+
-                        "<div class='fa fa-heart'id='icon'>"+"</div>"+
-                        "<a class='like_subtext'>"+books[i].Janri+"<br>"+books[i].fasi+" ₾"+"</a>"+
-                        "</div>"+
-                        "</div>"+
-                        "</div>"
-                    );
-                }
-            </script>
+                    <div class='popular_subtitle second'>
+                        <div class='fa fa-heart'id='icon'></div>
+                        <a class='like_subtext'><?php $results->showStatus($book); ?></a>
+                    </div>
+                </div>
+            </div>
 
         </div>
+
+        <?php } ?>
+
     </div>
 </div>
 

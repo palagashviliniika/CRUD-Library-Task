@@ -9,4 +9,20 @@ class BooksView {
 
         return $results;
     }
+
+    public function showTitle($book){
+        echo htmlspecialchars($book['title']);
+    }
+
+    public function showRelDate($book){
+        echo htmlspecialchars($book['relDate']);
+    }
+
+    public function showStatus($book){
+        echo htmlspecialchars($book['status']);
+    }
+
+    public function showAuthor($book){
+        echo htmlspecialchars($book['author']);
+    }
 }
