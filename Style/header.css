@@ -1,0 +1,109 @@
+.header{
+    width: 77.375rem;
+    margin: 0 auto;
+    padding: 1.7rem 0 4.75rem 0;
+}
+
+.header_inner{
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+    align-items: center;
+}
+
+.header1{
+    display: flex;
+    align-items: center;
+}
+
+.header1:hover .fa-bookmark{
+    color: #FF0077;
+    font-size: 4rem;
+    transform: translateY(33.5px);
+}
+
+.fa.fa-bookmark{
+    top: -40px;
+    font-size: 4rem;
+    color: black;
+    text-decoration: none;
+    transition: 0.2s linear color, 0.2s linear font-size, 0.2s linear transform;
+    position: absolute;
+}
+
+.name{
+    font-size: 2rem;
+    color: black;
+    text-decoration: none;
+    margin-left: 3.5rem;
+}
+
+.header2{
+    display: flex;
+}
+
+.h2{
+    margin-left: 2rem;
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: 0.2s linear color, 0.2s linear border;
+    border-bottom:1px solid white;
+}
+
+.h2:hover{
+    color: #FF0077;
+    border-bottom:1px solid #FF0077;
+}
+
+.slideThree {
+    width: 80px;
+    height: 26px;
+    background: #333;
+    margin: 0;
+    left: 20px;
+    bottom: 1px;
+    position: relative;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.slideThree:after {
+    content: "OFF";
+    color: #000;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+}
+.slideThree:before {
+    content: "ON";
+    color: #27ae60;
+    position: absolute;
+    left: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+}
+.slideThree label {
+    display: block;
+    width: 34px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #fcfff4;
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+.slideThree input[type="checkbox"] {
+    visibility: hidden;
+}
+.slideThree input[type="checkbox"]:checked + label {
+    left: 43px;
+}
