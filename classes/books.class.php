@@ -12,8 +12,10 @@ class Books extends Dbh {
         return $results;
     }
 
-    public function setBooks(){
-
+    public function setBooks($postData){
+        $sql = "INSERT INTO books (title, relDate, status, author) VALUES (?,?,?,?)";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$postData['title'], $postData['year'], $postData['status'], $postData['author']]);
     }
 
 }

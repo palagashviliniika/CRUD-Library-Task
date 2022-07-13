@@ -1,12 +1,49 @@
 <?php
 require "classes/booksView.php";
+require "classes/booksContr.php";
+require "classes/validator.php";
 
-//instantiatingview class
+//instantiating view class
 $results = new BooksView();
 
 //fetching all books
 $books = $results->getBooks();
+$errorsCount = 0;
 
+if (isset($_POST['submit'])){
+
+//    if (empty($_POST['title'])){
+//        echo "title is required!".'<br>';
+//        $errorsCount++;
+//    }
+//
+//    if (empty($_POST['author'])){
+//        echo "author is required!".'<br>';
+//        $errorsCount++;
+//    }
+//
+//    if (empty($_POST['year'])){
+//        echo "year is required!".'<br>';
+//        $errorsCount++;
+//    }
+//
+//    if (empty($_POST['status'])){
+//        echo "status is required".'<br>';
+//        $errorsCount++;
+//    }
+//
+//    if ($errorsCount==0){
+//        $saveBook = new BooksController($_POST);
+//        $saveBook->saveBook();
+//    }
+
+    $validation = new Validator($_POST);
+    $errors = $validation->validateForm();
+
+    if ($errors){
+        echo "There are errors!";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,23 +71,8 @@ $books = $results->getBooks();
 </head>
 
 <body>
-<div class="header">
-    <div class="header_inner">
-        <div class="header1">
-            <a class="fa fa-bookmark night" href="" ></a>
-            <a class="name night" href="" id="header1">bookinder</a>
-        </div>
-        <div class="header2">
-            <a class="h2" href="">home</a>
-            <a class="h2" href="">features</a>
-            <a class="h2" href="">about us</a>
-            <a class="h2" href="">news</a>
-            <a class="h2" href="">videos</a>
-            <a class="h2" href="">contacts</a>
-        </div>
-    </div>
-</div>
 
+<?php include "includes/header.php";?>
 
 <div class="popular3">
     <div class="container_popular3">
@@ -62,7 +84,7 @@ $books = $results->getBooks();
 
             <div class='post'>
 
-                <div class='img' style='background-image: url("images/default.jpg")'></div>
+<!--                <div class='img' style='background-image: url("images/default.jpg")'></div>-->
 
                     <div class='popular_description'>
                     <h3 class='h3_art'>
@@ -92,92 +114,32 @@ $books = $results->getBooks();
 <div class="advanced">
 
 
-    <div class="search">
-        <div class="formname">search</div>
-
-        <div class="div">
-            <input type="text" placeholder="დასახელება" class="input" id="dasaxeleba">
-        </div>
-
-        <div class="div">
-            <input type="text" placeholder="ავტორი" class="input">
-        </div>
-
-        <div class="div">
-            <input type="text" placeholder="გამომცემლობა" class="input">
-        </div>
-
-        <div class="div">
-            <input type="text" placeholder="გამოცემის წელი" class="input">
-        </div>
-
-        <div class="div">
-            <select  placeholder="ჟანრი" class="select">
-                <option value="პოემა">პოემა</option>
-                <option value="ლირიკა">ლირიკა</option>
-                <option value="კომედია">კომედია</option>
-            </select>
-        </div>
-
-
-        <input type="button" value="ძებნა" onclick="find_book();" class="search_btn">
-
-
-    </div>
-
-
-    <div class="search register">
+    <form class="search register" action="index.php" method="post">
         <div class="formname">add book</div>
-        <div class="div">
-            <input id="autor" type="text" placeholder="ავტორი *" class="input">
-        </div>
 
         <div class="div">
-            <input type="text" placeholder="დასახელება *" class="input" id="r_dasaxeleba">
+            <input type="text" id="title" name="title" placeholder="დასახელება*" class="input">
         </div>
-
+        <div class="error"></div>
         <div class="div">
-            <input type="text" placeholder="გამომცემლობა" class="input">
+            <input type="text" id="author" name="author" placeholder="ავტორი*" class="input" >
         </div>
-
+        <div class="error"></div>
         <div class="div">
-            <input type="text" placeholder="გამოცემის წელი" class="input">
+            <input type="text" id="year" name="year" placeholder="გამოშვების წელი*" class="input">
         </div>
-
+        <div class="error"></div>
         <div class="div">
-            <select  placeholder="ჟანრი" class="select" id="Janri">
-                <option value="პოემა">პოემა</option>
-                <option value="ლირიკა">ლირიკა</option>
-                <option value="კომედია">კომედია</option>
-            </select>
+            <input type="text" id="status" name="status" placeholder="სტატუსი*" class="input">
         </div>
+        <div class="error"></div>
 
-        <input type="button" value="დამატება" onclick="add_book();" class="search_btn second">
+        <input type="submit" id="submit" name="submit" value="დამატება" class="search_btn second">
 
-    </div>
+    </form>
 </div>
 
-<footer class="footer">
-    <div class="line"></div>
-    <div class="container footer">
-        <div class="footer_description">
-            <div class="fa fa-book"></div>
-            <div class="footer_text">Sweeft Library Task - Nika Palagashvili</div>
-        </div>
-        <div class="footer_navigation">
-            <a class="hf" href="">features</a>
-            <a class="hf" href="">about us</a>
-            <a class="hf" href="">news</a>
-            <a class="hf" href="">videos</a>
-            <a class="hf" href="">contacts</a>
-        </div>
-    </div>
-    <div class="copyright">
-        © Copyright 2019 logo Here  – All Rights Reserved.
-    </div>
-</footer>
-
-
+<?php include "includes/footer.php";?>
 
 </body>
 </html>
