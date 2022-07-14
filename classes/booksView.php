@@ -10,6 +10,13 @@ class BooksView {
         return $results;
     }
 
+    public function getBook($id){
+        $book = new Books();
+        $result = $book->getBook($id);
+
+        return $result;
+    }
+
     public function showID($book){
         echo htmlspecialchars($book['id']);
     }

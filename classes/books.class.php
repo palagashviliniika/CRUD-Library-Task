@@ -24,4 +24,18 @@ class Books extends Dbh {
         $stmt->execute();
     }
 
+    public function getBook($id){
+        $sql = "SELECT * FROM books WHERE id=$id";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function setBook($postData){
+        $sql = "UPDATE books SET title = ?, relDate = ?, status = ?, author = ? WHERE id = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$postData['title'], $postData['year'], $postData['status'], $postData['author'], $postData['id']]);
+    }
 }

@@ -33,4 +33,9 @@ class BooksController{
             header('location: index.php');
         }
     }
+
+    public function updateBook(){
+        $book = new Books();
+        $book->setBook($this->postData);
+    }
 }

@@ -31,6 +31,11 @@ if (isset($_POST['delete-btn'])){
 
                     <div class='img' style='background-image: url("images/default.jpg")'>
                         <input type="checkbox" class="delete-checkbox" name="delete-checkbox[]" value="<?php $results->showID($book); ?>">
+                            <button>
+                                <a href="edit.php?id=<?php echo $book['id'];?>">
+                                    Edit
+                                </a>
+                            </button>
                     </div>
 
                     <div class='popular_description'>
