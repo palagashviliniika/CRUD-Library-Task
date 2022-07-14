@@ -19,46 +19,49 @@ if (isset($_POST['delete-btn'])){
 
 <div class="popular3">
     <div class="container_popular3">
-        <div class="headline">popular posts</div>
+
+        <div class="headline">
+            popular posts
+        </div>
 
         <form action="index.php" id="delete-form" method="post">
 
-            <div class="container second">
+        <div class="container second">
 
-                <?php foreach ($books as $book){ ?>
+            <?php foreach ($books as $book){ ?>
 
-                <div class='post'>
+            <div class='post'>
 
-                    <div class='img' style='background-image: url("images/default.jpg")'>
-                        <input type="checkbox" class="delete-checkbox" name="delete-checkbox[]" value="<?php $results->showID($book); ?>">
-                            <button>
-                                <a href="edit.php?id=<?php echo $book['id'];?>">
-                                    Edit
-                                </a>
-                            </button>
-                    </div>
-
-                    <div class='popular_description'>
-                        <h3 class='h3_art'>
-                            <a href='' class='popular_article'>
-                                <?php $results->showTitle($book); ?>
+                <div class='img' style='background-image: url("images/default.jpg")'>
+                    <input type="checkbox" class="delete-checkbox" name="delete-checkbox[]" value="<?php $results->showID($book); ?>">
+                        <button>
+                            <a href="edit.php?id=<?php echo $book['id'];?>">
+                                Edit
                             </a>
-                        </h3>
-                        <div class='popular_subtitle'>
-                            <div class='fa fa-star'></div>
-                            <a class='popular_subtext'><?php $results->showAuthor($book); ?> - <?php $results->showRelDate($book); ?> </a>
-                        </div>
-
-                        <div class='popular_subtitle second'>
-                            <div class='fa fa-heart'id='icon'></div>
-                            <a class='like_subtext'><?php $results->showStatus($book); ?></a>
-                        </div>
-                    </div>
+                        </button>
                 </div>
 
-                <?php } ?>
+                <div class='popular_description'>
+                    <h3 class='h3_art'>
+                        <a href='' class='popular_article'>
+                            <?php $results->showTitle($book); ?>
+                        </a>
+                    </h3>
+                    <div class='popular_subtitle'>
+                        <div class='fa fa-star'></div>
+                        <a class='popular_subtext'><?php $results->showAuthor($book); ?> - <?php $results->showRelDate($book); ?> </a>
+                    </div>
 
+                    <div class='popular_subtitle second'>
+                        <div class='fa fa-heart'id='icon'></div>
+                        <a class='like_subtext'><?php $results->showStatus($book); ?></a>
+                    </div>
+                </div>
             </div>
+
+            <?php } ?>
+
+        </div>
 
         </form>
 

@@ -17,6 +17,13 @@ class BooksView {
         return $result;
     }
 
+    public function getAuthors(){
+        $authors = new Books();
+        $results = $authors->getAuthors();
+
+        return $results;
+    }
+
     public function showID($book){
         echo htmlspecialchars($book['id']);
     }
@@ -39,5 +46,9 @@ class BooksView {
 
     public function showError($errors, $field){
         echo htmlspecialchars($errors[$field]);
+    }
+
+    public  function showSingleAuthor($author, $i){
+        echo $author[$i];
     }
 }

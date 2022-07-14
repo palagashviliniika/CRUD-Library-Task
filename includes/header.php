@@ -36,7 +36,7 @@
             <a class="h2" href="">features</a>
             <a class="h2" href="">about us</a>
             <a class="h2" href="./add.php">add a book</a>
-            <a class="h2" href="">videos</a>
+            <a class="h2" href="./authors.php">Authors</a>
             <a class="h2" href="">contacts</a>
             <button class="h2" value="delete" name="delete-btn" id="delete-btn" form="delete-form">Delete</button>
         </div>

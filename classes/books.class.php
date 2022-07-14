@@ -38,4 +38,13 @@ class Books extends Dbh {
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$postData['title'], $postData['year'], $postData['status'], $postData['author'], $postData['id']]);
     }
+
+    public function getAuthors(){
+        $sql = "SELECT DISTINCT author FROM books";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+
+        $results = $stmt->fetchAll();
+        return $results;
+    }
 }
