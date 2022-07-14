@@ -25,4 +25,8 @@ class BooksView {
     public function showAuthor($book){
         echo htmlspecialchars($book['author']);
     }
+
+    public function showError($errors, $field){
+        echo htmlspecialchars($errors[$field]);
+    }
 }
