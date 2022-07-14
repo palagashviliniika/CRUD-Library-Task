@@ -18,4 +18,10 @@ class Books extends Dbh {
         $stmt->execute([$postData['title'], $postData['year'], $postData['status'], $postData['author']]);
     }
 
+    public function deleteBooks($ids){
+        $sql = "DELETE FROM books WHERE id IN ($ids)";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+    }
+
 }

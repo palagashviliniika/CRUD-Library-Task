@@ -21,4 +21,16 @@ class BooksController{
         $book = new Books();
         $book->setBooks($this->postData);
     }
+
+    public function deleteBooks(){
+        if (empty($this->postData['delete-checkbox'])){
+            header('location: index.php');
+        } else{
+            $string = implode(', ', $this->postData['delete-checkbox']);
+
+            $delete = new Books();
+            $delete->deleteBooks($string);
+            header('location: index.php');
+        }
+    }
 }
