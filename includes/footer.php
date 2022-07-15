@@ -17,7 +17,4 @@
             <a class="hf" href="">contacts</a>
         </div>
     </div>
-    <div class="copyright">
-        © Copyright 2019 logo Here  – All Rights Reserved.
-    </div>
 </footer>

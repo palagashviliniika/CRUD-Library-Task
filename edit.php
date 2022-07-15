@@ -35,13 +35,13 @@ if (isset($_POST['submit'])){
 
         <input type="hidden" id="id", name="id", class="input" value="<?php $results->showID($book); ?>">
 
-        <input type="text" id="title" name="title" placeholder="დასახელება*" class="input" value="<?php $results->showTitle($book); ?>">
+        <input type="text" id="title" name="title" placeholder="დასახელება*" class="inputs" value="<?php $results->showTitle($book); ?>">
         <div class="error"><?php @$results->showError($errors, 'title');?></div>
-        <input type="text" id="author" name="author" placeholder="ავტორი*" class="input" value="<?php $results->showAuthor($book); ?>">
+        <input type="text" id="author" name="author" placeholder="ავტორი*" class="inputs" value="<?php $results->showAuthor($book); ?>">
         <div class="error"><?php @$results->showError($errors, 'author');?></div>
-        <input type="text" id="year" name="year" placeholder="გამოშვების წელი*" class="input" value="<?php $results->showRelDate($book); ?>">
+        <input type="text" id="year" name="year" placeholder="გამოშვების წელი*" class="inputs" value="<?php $results->showRelDate($book); ?>">
         <div class="error"><?php @$results->showError($errors, 'year');?></div>
-        <select id="status" name="status" placeholder="სტატუსი*" class="input" value="<?php $results->showStatus($book); ?>">
+        <select id="status" name="status" placeholder="სტატუსი*" class="inputs" value="<?php $results->showStatus($book); ?>">
             <option value="<?php $results->showStatus($book); ?>"selected hidden><?php $results->showStatus($book); ?></option>
             <option value="თავისუფალი">თავისუფალი</option>
             <option value="დაკავებული">დაკავებული</option>

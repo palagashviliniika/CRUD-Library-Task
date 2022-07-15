@@ -25,15 +25,15 @@ if (isset($_POST['submit'])){
 
 
     <form class="search register" action="add.php" method="post">
-        <div class="formname">add book</div>
+        <div class="formname">Add Book</div>
 
-        <input type="text" id="title" name="title" placeholder="დასახელება*" class="input">
+        <input type="text" id="title" name="title" placeholder="დასახელება*" class="inputs">
         <div class="error"><?php @$results->showError($errors, 'title');?></div>
-        <input type="text" id="author" name="author" placeholder="ავტორი*" class="input" >
+        <input type="text" id="author" name="author" placeholder="ავტორი*" class="inputs" >
         <div class="error"><?php @$results->showError($errors, 'author');?></div>
-        <input type="text" id="year" name="year" placeholder="გამოშვების წელი*" class="input">
+        <input type="text" id="year" name="year" placeholder="გამოშვების წელი*" class="inputs">
         <div class="error"><?php @$results->showError($errors, 'year');?></div>
-        <select id="status" name="status" placeholder="სტატუსი*" class="input">
+        <select id="status" name="status" placeholder="სტატუსი*" class="inputs">
             <option value="">აირჩიეთ სტატუსი</option>
             <option value="თავისუფალი">თავისუფალი</option>
             <option value="დაკავებული">დაკავებული</option>

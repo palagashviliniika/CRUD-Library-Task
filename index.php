@@ -11,19 +11,19 @@ $results = new BooksView();
 $authors = $results->getAuthors();
 $titles = $results->getTitles();
 
+//filtering authors for filter input
 $authorsFilterClass = new Filter($authors);
 $uniqReindexedAuthors = $authorsFilterClass->filterAuthors();
 
-$titlesFilteredClass = new Filter($titles);
-$uniqReindexedTitles = $titlesFilteredClass->filterTitles();
-
+//checking if delete button is clicked
 if (isset($_POST['delete-btn'])){
     $delete = new BooksController($_POST);
     $delete->deleteBooks();
 }
 
+//checking if search and filter button is clicked
 if (isset($_POST['filter-btn'])){
-    $books = $results->getFilteredBooks($_POST['author-filter'], $_POST['title-filter']);
+    $books = $results->getFilteredBooks($_POST['author-filter'], $_POST['search']);
 
 } else {
     //fetching all books
@@ -37,6 +37,8 @@ if (isset($_POST['filter-btn'])){
     <div class="filter">
         <form action="index.php" method="post" id="filter-form">
 
+            <input type="search" id="search" name="search" placeholder="საძიებო დასახელება" class="input">
+
             <select name="author-filter" id="author-filter" class="input">
                 <option value="*">ყველა ავტორი</option>
                 <?php for ($i=0;$i<sizeof($uniqReindexedAuthors);$i++){ ?>
@@ -44,14 +46,7 @@ if (isset($_POST['filter-btn'])){
                 <?php } ?>
             </select>
 
-            <select name="title-filter" id="title-filter" class="input">
-                <option value="*">ყველა სახელი</option>
-                <?php for ($int=0;$int<sizeof($uniqReindexedTitles);$int++){ ?>
-                    <option value="<?php echo $results->showSingleTitle($uniqReindexedTitles, $int)?>"><?php echo $results->showSingleTitle($uniqReindexedTitles, $int)?></option>
-                <?php } ?>
-            </select>
-
-            <input type="submit" id="filter-btn" name="filter-btn" value="გაფილტვრა">
+            <input type="submit" id="filter-btn" name="filter-btn" value="გაფილტვრა და მოძებნა">
 
         </form>
     </div>
@@ -73,12 +68,14 @@ if (isset($_POST['filter-btn'])){
             <div class='post'>
 
                 <div class='img' style='background-image: url("images/default.jpg")'>
-                    <input type="checkbox" class="delete-checkbox" name="delete-checkbox[]" value="<?php $results->showID($book); ?>">
-                        <button>
-                            <a href="edit.php?id=<?php echo $book['id'];?>">
+                    <div class="actions">
+                        <input type="checkbox" class="delete-checkbox" name="delete-checkbox[]" value="<?php $results->showID($book); ?>">
+                        <button class="edit-btn" disabled>
+                            <a href="edit.php?id=<?php echo $book['id'];?>" class="edit-link">
                                 Edit
                             </a>
                         </button>
+                    </div>
                 </div>
 
                 <div class='popular_description'>

@@ -1,0 +1,87 @@
+#icon{
+    padding-left: 0;
+}
+
+.fa-heart{
+    font-size: 14.5px;
+    padding-left: 30px;
+    padding-top: 3px;
+    color: #FF0077;
+    transition: 0.2s linear font-size;
+    position: absolute;
+}
+
+.fa-star{
+    font-size: 17px;
+    padding-top: 3px;
+    padding-right: 8px;
+    color: #FFAA00;
+    transition: 0.2s linear font-size;
+    position: absolute;
+}
+
+button.edit-btn{
+    background-color: white;
+    position: absolute;
+    right: 10px;
+    border: 0 solid;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.edit-link{
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: #FF0077;
+}
+
+.edit-link:visited{
+    color: #FF0077;
+}
+
+.actions{
+    display: flex;
+    padding: 10px 0 0 10px;
+    position: relative;
+}
+
+.delete-btn{
+    margin-left: 2rem;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #FF0077;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+}
+
+.search-filter{
+    width: 77.375rem;
+    margin: 0 auto 30px auto;
+}
+
+.advanced{
+    width: 77.375rem;
+    margin: 0 auto 30px auto;
+}
+
+.inputs{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(182, 181, 181);
+    outline-color: rgb(182, 181, 181);
+}
+
+.formname{
+    font-size: 3rem;
+}
+
+.error{
+    color: red;
+}
