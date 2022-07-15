@@ -47,4 +47,13 @@ class Books extends Dbh {
         $results = $stmt->fetchAll();
         return $results;
     }
+
+    public function getFilteredBooks($filter){
+        $sql = "SELECT * FROM books WHERE author LIKE '%$filter%'";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+
+        $results = $stmt->fetchAll();
+        return $results;
+    }
 }

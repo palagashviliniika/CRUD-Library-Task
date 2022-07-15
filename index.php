@@ -2,20 +2,50 @@
 require "classes/booksView.php";
 require "classes/booksContr.php";
 require "classes/validator.php";
+require "classes/authors.class.php";
 
 //instantiating view class
 $results = new BooksView();
 
-//fetching all books
-$books = $results->getBooks();
+//fetching all authors
+$authors = $results->getAuthors();
+
+$authorClass = new Authors($authors);
+$uniqReindexedAuthors = $authorClass->filterAuthors();
 
 if (isset($_POST['delete-btn'])){
     $delete = new BooksController($_POST);
     $delete->deleteBooks();
 }
+
+if (isset($_POST['filter-btn'])){
+
+    $books = $results->getFilteredBooks($_POST['author-filter']);
+
+} else {
+    //fetching all books
+    $books = $results->getBooks();
+}
 ?>
 
 <?php include "includes/header.php";?>
+
+<div class="search-filter">
+    <div class="filter">
+        <form action="index.php" method="post" id="filter-form">
+
+            <select name="author-filter" id="author-filter" placeholer="ავტორი" class="input">
+                <option value="*">ყველა</option>
+                <?php for ($i=0;$i<sizeof($uniqReindexedAuthors);$i++){ ?>
+                <option value="<?php echo $results->showSingleAuthor($uniqReindexedAuthors, $i)?>"><?php echo $results->showSingleAuthor($uniqReindexedAuthors, $i)?></option>
+                <?php } ?>
+            </select>
+
+            <input type="submit" id="filter-btn" name="filter-btn" value="გაფილტვრა">
+
+        </form>
+    </div>
+</div>
 
 <div class="popular3">
     <div class="container_popular3">

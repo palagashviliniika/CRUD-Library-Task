@@ -24,6 +24,18 @@ class BooksView {
         return $results;
     }
 
+    public function getFilteredBooks($filter){
+        $books = new Books();
+
+        if ($filter == '*'){
+            $results = $books->getBooks();
+        } else {
+            $results = $books->getFilteredBooks($filter);
+        }
+
+        return $results;
+    }
+
     public function showID($book){
         echo htmlspecialchars($book['id']);
     }

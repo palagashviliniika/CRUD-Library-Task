@@ -1,7 +1,7 @@
 <?php
 require_once "books.class.php";
 
-class BooksController{
+class BooksController {
     private $postData;
 
     public function __construct($postData)

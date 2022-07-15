@@ -33,15 +33,12 @@ $uniqReindexed = $authorsClass->filterAuthors();
                     <div class='img' style='background-image: url("images/avatar.jpg")'></div>
 
                     <div class='popular_description'>
+
                         <h3 class='h3_art'>
                             <a href='' class='popular_article'>
                                 <?php echo $results->showSingleAuthor($uniqReindexed,$i); ?>
                             </a>
                         </h3>
-                        <div class='popular_subtitle'>
-                            <div class='fa fa-star'></div>
-                            <a class='popular_subtext'><?php echo $results->showSingleAuthor($uniqReindexed,$i); ?></a>
-                        </div>
 
                     </div>
                 </div>
