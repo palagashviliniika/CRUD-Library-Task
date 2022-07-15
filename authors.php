@@ -2,7 +2,7 @@
 require "classes/booksView.php";
 require "classes/booksContr.php";
 require "classes/validator.php";
-require "classes/authors.class.php";
+require "classes/filter.class.php";
 
 //instantiating view class
 $results = new BooksView();
@@ -10,7 +10,7 @@ $results = new BooksView();
 //fetching all authors
 $authors = $results->getAuthors();
 
-$authorsClass = new Authors($authors);
+$authorsClass = new Filter($authors);
 $uniqReindexed = $authorsClass->filterAuthors();
 
 ?>

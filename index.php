@@ -2,16 +2,20 @@
 require "classes/booksView.php";
 require "classes/booksContr.php";
 require "classes/validator.php";
-require "classes/authors.class.php";
+require "classes/filter.class.php";
 
 //instantiating view class
 $results = new BooksView();
 
 //fetching all authors
 $authors = $results->getAuthors();
+$titles = $results->getTitles();
 
-$authorClass = new Authors($authors);
-$uniqReindexedAuthors = $authorClass->filterAuthors();
+$authorsFilterClass = new Filter($authors);
+$uniqReindexedAuthors = $authorsFilterClass->filterAuthors();
+
+$titlesFilteredClass = new Filter($titles);
+$uniqReindexedTitles = $titlesFilteredClass->filterTitles();
 
 if (isset($_POST['delete-btn'])){
     $delete = new BooksController($_POST);
@@ -19,8 +23,7 @@ if (isset($_POST['delete-btn'])){
 }
 
 if (isset($_POST['filter-btn'])){
-
-    $books = $results->getFilteredBooks($_POST['author-filter']);
+    $books = $results->getFilteredBooks($_POST['author-filter'], $_POST['title-filter']);
 
 } else {
     //fetching all books
@@ -34,10 +37,17 @@ if (isset($_POST['filter-btn'])){
     <div class="filter">
         <form action="index.php" method="post" id="filter-form">
 
-            <select name="author-filter" id="author-filter" placeholer="ავტორი" class="input">
-                <option value="*">ყველა</option>
+            <select name="author-filter" id="author-filter" class="input">
+                <option value="*">ყველა ავტორი</option>
                 <?php for ($i=0;$i<sizeof($uniqReindexedAuthors);$i++){ ?>
                 <option value="<?php echo $results->showSingleAuthor($uniqReindexedAuthors, $i)?>"><?php echo $results->showSingleAuthor($uniqReindexedAuthors, $i)?></option>
+                <?php } ?>
+            </select>
+
+            <select name="title-filter" id="title-filter" class="input">
+                <option value="*">ყველა სახელი</option>
+                <?php for ($int=0;$int<sizeof($uniqReindexedTitles);$int++){ ?>
+                    <option value="<?php echo $results->showSingleTitle($uniqReindexedTitles, $int)?>"><?php echo $results->showSingleTitle($uniqReindexedTitles, $int)?></option>
                 <?php } ?>
             </select>
 

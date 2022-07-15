@@ -24,13 +24,26 @@ class BooksView {
         return $results;
     }
 
-    public function getFilteredBooks($filter){
+    public function getTitles(){
+        $titles = new Books();
+        $results = $titles->getTitles();
+
+        return $results;
+    }
+
+    public function getFilteredBooks($authorFilter, $titleFilter){
         $books = new Books();
 
-        if ($filter == '*'){
+        if ($authorFilter == '*' && $titleFilter == '*'){
             $results = $books->getBooks();
         } else {
-            $results = $books->getFilteredBooks($filter);
+            if ($authorFilter != '*' && $titleFilter != '*'){
+                $results = $books->getBothFilteredBooks($authorFilter, $titleFilter);
+            } elseif ($authorFilter != '*' && $titleFilter =='*'){
+                $results = $books->getAuthorFilteredBooks($authorFilter);
+            } elseif ($authorFilter == '*' && $titleFilter != '*'){
+                $results = $books->getTitleFilteredBooks($titleFilter);
+            }
         }
 
         return $results;
@@ -62,5 +75,9 @@ class BooksView {
 
     public  function showSingleAuthor($author, $i){
         echo $author[$i];
+    }
+
+    public  function showSingleTitle($title, $i){
+        echo $title[$i];
     }
 }

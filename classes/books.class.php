@@ -48,8 +48,35 @@ class Books extends Dbh {
         return $results;
     }
 
-    public function getFilteredBooks($filter){
-        $sql = "SELECT * FROM books WHERE author LIKE '%$filter%'";
+    public function getTitles(){
+        $sql = "SELECT DISTINCT title FROM books";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+
+        $results = $stmt->fetchAll();
+        return $results;
+    }
+
+    public function getBothFilteredBooks($authorFilter, $titleFilter){
+        $sql = "SELECT * FROM books WHERE author LIKE '%$authorFilter%' AND title LIKE '%$titleFilter%'";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+
+        $results = $stmt->fetchAll();
+        return $results;
+    }
+
+    public function getAuthorFilteredBooks($authorFilter){
+        $sql = "SELECT * FROM books WHERE author LIKE '%$authorFilter%'";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+
+        $results = $stmt->fetchAll();
+        return $results;
+    }
+
+    public function getTitleFilteredBooks($titleFilter){
+        $sql = "SELECT * FROM books WHERE title LIKE '%$titleFilter%'";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute();
 
